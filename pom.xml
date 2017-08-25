@@ -6,7 +6,7 @@
 	<groupId>com.github.pogoraidr</groupId>
 	<artifactId>pogo-raidr</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>Pokemon GO raid organizer for Messenger</description>
