@@ -70,7 +70,7 @@ public class MessengerPlatformCallbackHandler {
     /**
      * Constructs the {@code MessengerPlatformCallbackHandler} and initializes the {@code MessengerReceiveClient}.
      *
-     * @param appSecret   the {@code Application Secret}
+     * @param appSecret   the {@code PoGORaidRApplication Secret}
      * @param verifyToken the {@code Verification Token} that has been provided by you during the setup of the {@code
      *                    Webhook}
      * @param sendClient  the initialized {@code MessengerSendClient}
