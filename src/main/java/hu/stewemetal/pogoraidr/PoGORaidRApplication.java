@@ -1,4 +1,4 @@
-package com.github.messenger4j.quickstart.boot;
+package hu.stewemetal.pogoraidr;
 
 import com.github.messenger4j.MessengerPlatform;
 import com.github.messenger4j.send.MessengerSendClient;
@@ -24,7 +24,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class PoGORaidRApplication extends SpringBootServletInitializer {
 
-    private static final Logger logger = LoggerFactory.getLogger(PoGORaidRApplication.class);
+    private static final Logger pogoLogger = LoggerFactory.getLogger(PoGORaidRApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(PoGORaidRApplication.class, args);
@@ -43,7 +43,7 @@ public class PoGORaidRApplication extends SpringBootServletInitializer {
      */
     @Bean
     public MessengerSendClient messengerSendClient(@Value("${messenger4j.pageAccessToken}") String pageAccessToken) {
-        logger.debug("Initializing MessengerSendClient - pageAccessToken: {}", pageAccessToken);
+        pogoLogger.debug("Initializing MessengerSendClient - pageAccessToken: {}", pageAccessToken);
         return MessengerPlatform.newSendClientBuilder(pageAccessToken).build();
     }
 

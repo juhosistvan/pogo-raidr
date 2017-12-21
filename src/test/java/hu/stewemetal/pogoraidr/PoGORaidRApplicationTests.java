@@ -1,4 +1,4 @@
-package com.github.messenger4j.quickstart.boot;
+package hu.stewemetal.pogoraidr;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

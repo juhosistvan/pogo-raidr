@@ -1,4 +1,4 @@
-package com.github.messenger4j.quickstart.boot;
+package hu.stewemetal.pogoraidr;
 
 import static com.github.messenger4j.MessengerPlatform.CHALLENGE_REQUEST_PARAM_NAME;
 import static com.github.messenger4j.MessengerPlatform.MODE_REQUEST_PARAM_NAME;
@@ -63,6 +63,7 @@ public class MessengerPlatformCallbackHandler {
             "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/master/node/public";
 
     private static final Logger logger = LoggerFactory.getLogger(MessengerPlatformCallbackHandler.class);
+
 
     private final MessengerReceiveClient receiveClient;
     private final MessengerSendClient sendClient;
