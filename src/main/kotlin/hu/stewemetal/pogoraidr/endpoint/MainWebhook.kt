@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.util.*
 import java.util.Optional.of
 
 @RestController
@@ -37,8 +38,9 @@ class MainWebhook(val messenger: Messenger) {
 
     @RequestMapping(method = [RequestMethod.POST])
     fun handleCallback(@RequestBody requestPayload: String,
-                       @RequestHeader(SIGNATURE_HEADER_NAME) signature: String) {
-        messenger.onReceiveEvents(requestPayload, of(signature), { event -> handleMessengerCallbackEvent(event) })
+                       @RequestHeader(SIGNATURE_HEADER_NAME) signature: String?) {
+        val sign = if(signature==null) Optional.empty<String>() else of(signature)
+        messenger.onReceiveEvents(requestPayload, sign, { event -> handleMessengerCallbackEvent(event) })
     }
 
     fun handleMessengerCallbackEvent(event: Event) {
