@@ -19,8 +19,11 @@ class PoGORaidrApplication {
         return Messenger.create(pageAccessToken, appSecret, verifyToken)
     }
 
-    fun main(args: Array<String>) {
-        SpringApplication.run(PoGORaidrApplication::class.java, *args)
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            SpringApplication.run(PoGORaidrApplication::class.java, *args)
+        }
     }
 
 }
