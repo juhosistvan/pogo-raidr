@@ -9,6 +9,8 @@ import com.github.messenger4j.send.message.TextMessage
 import com.github.messenger4j.webhook.Event
 import com.github.messenger4j.webhook.event.*
 import org.slf4j.LoggerFactory
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.Optional.of
 
@@ -21,8 +23,16 @@ class MainWebhook(val messenger: Messenger) {
 
     @RequestMapping(method = [RequestMethod.GET])
     fun verifyWebhook(@RequestParam(MODE_REQUEST_PARAM_NAME) mode: String,
-                      @RequestParam(VERIFY_TOKEN_REQUEST_PARAM_NAME) verifyToken: String) {
-        messenger.verifyWebhook(mode, verifyToken)
+                      @RequestParam(VERIFY_TOKEN_REQUEST_PARAM_NAME) verifyToken: String,
+                      @RequestParam(CHALLENGE_REQUEST_PARAM_NAME) challenge: String): ResponseEntity<String> {
+
+        try {
+            messenger.verifyWebhook(mode, verifyToken)
+            return ResponseEntity.ok(challenge)
+        } catch (e: Exception) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.message)
+        }
+
     }
 
     @RequestMapping(method = [RequestMethod.POST])
