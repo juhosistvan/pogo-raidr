@@ -90,39 +90,39 @@ class MainWebhook(val messenger: Messenger) {
     }
 
     private fun handleReferralEvent(event: ReferralEvent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        logger.info("Referral event arrived: {}",event)
     }
 
     private fun handleQuickReplyMessageEvent(event: QuickReplyMessageEvent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        logger.info("QuickReplyMessage event arrived: {}",event)
     }
 
     private fun handlePostBackEvent(event: PostbackEvent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        logger.info("PostBack event arrived: {}",event)
     }
 
     private fun handleOptInEvent(event: OptInEvent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        logger.info("OptIn event arrived: {}",event)
     }
 
     private fun handleMessageReadEvent(event: MessageReadEvent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        logger.info("MessageRead event arrived: {}",event)
     }
 
     private fun handleMessageEchoEvent(event: MessageEchoEvent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        logger.info("MessageEcho event arrived: {}",event)
     }
 
     private fun handleMessageDeliveredEvent(event: MessageDeliveredEvent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        logger.info("MessageDelivered event arrived: {}",event)
     }
 
     private fun handleAttachmentMessageEvent(event: AttachmentMessageEvent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        logger.info("AttachmentMessage event arrived: {}",event)
     }
 
     private fun handleAccountLinkingEvent(event: AccountLinkingEvent) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        logger.info("AccountLinking event arrived: {}",event)
     }
 
     private fun handleSendException(e: MessengerIOException) {
