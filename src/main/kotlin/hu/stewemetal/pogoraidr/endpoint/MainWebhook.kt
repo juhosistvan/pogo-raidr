@@ -39,7 +39,9 @@ class MainWebhook(val messenger: Messenger) {
     @RequestMapping(method = [RequestMethod.POST])
     fun handleCallback(@RequestBody requestPayload: String,
                        @RequestHeader(SIGNATURE_HEADER_NAME) signature: String?) {
-        val sign = if(signature==null) Optional.empty<String>() else of(signature)
+        logger.info("Received callback event with signature: {}", signature)
+        val sign = if(signature==null) Optional.empty<String?>() else of(signature)
+        logger.info("Signature object: {}", sign)
         messenger.onReceiveEvents(requestPayload, sign, { event -> handleMessengerCallbackEvent(event) })
     }
 
@@ -69,8 +71,7 @@ class MainWebhook(val messenger: Messenger) {
         val messageText = event.text()
         val messageId = event.messageId()
 
-        logger.info("Received message '{}' with text '{}' from user '{}' at '{}'",
-                messageId, messageText, senderId, timestamp)
+        logger.info("Received message '{}' with text '{}' from user '{}' at '{}'", messageId, messageText, senderId, timestamp)
 
         try {
             val textMessage = TextMessage.create(messageText)
