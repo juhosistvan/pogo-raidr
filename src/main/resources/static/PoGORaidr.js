@@ -28,9 +28,7 @@ function testRaidCreation() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data, status, jqXHR) {
-                var element = document.createElement("h2");
-                element.text = data.host;
-                element.appendTo('body');
+                $("body").append("<h2>"+data.host+"</h2>");
             },
             error: function (jqXHR, status) {
                 // error handler
