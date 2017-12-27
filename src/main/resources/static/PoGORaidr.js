@@ -7,9 +7,18 @@
 }(document, 'script', 'Messenger'));
 
 var isMessengerLoaded = false;
+var context;
 
 window.extAsyncInit = function () {
     isMessengerLoaded = true;
+
+    MessengerExtensions.getContext('284745855342701',
+    function success(threadContext){
+        context = threadContext;
+    },
+    function error(err){
+
+    });
 };
 
 function testRaidCreation() {
@@ -29,6 +38,7 @@ function testRaidCreation() {
             dataType: "json",
             success: function (data, status, jqXHR) {
                 $("body").append("<h2>"+data.host+"</h2>");
+                $("body").append("<div>"+context.thread_type+", "+context.tid+"</div>");
             },
             error: function (jqXHR, status) {
                 // error handler
