@@ -10,5 +10,32 @@ var isMessengerLoaded = false;
 
 window.extAsyncInit = function () {
     isMessengerLoaded = true;
-    alert('Messenger Extensions JS SDK is done loading')
 };
+
+function testRaidCreation() {
+    if(isMessengerLoaded){
+        var data = {
+            "host":"Test Trainer",
+            "gymId":"12345",
+            "date":"2017.12.24",
+            "time":"12:00"
+        };
+
+        $.ajax({
+            url: "https://pogo-raidr.herokuapp.com/raid",
+            type: "POST",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data, status, jqXHR) {
+                var element = document.createElement("h2");
+                element.text = data.host;
+            },
+            error: function (jqXHR, status) {
+                // error handler
+                console.log(jqXHR);
+                alert('fail' + status.code);
+            }
+        })
+    }
+}
