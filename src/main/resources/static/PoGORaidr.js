@@ -30,6 +30,7 @@ function testRaidCreation() {
             success: function (data, status, jqXHR) {
                 var element = document.createElement("h2");
                 element.text = data.host;
+                element.appendTo('body');
             },
             error: function (jqXHR, status) {
                 // error handler
