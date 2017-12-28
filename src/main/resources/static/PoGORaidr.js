@@ -31,14 +31,15 @@ function testRaidCreation() {
         };
 
         $.ajax({
-            url: "https://pogo-raidr.herokuapp.com/raid",
+            url: "/raid",
             type: "POST",
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data, status, jqXHR) {
-                $("body").append("<h2>"+data.host+"</h2>");
-                $("body").append("<div>"+context.thread_type+", "+context.tid+"</div>");
+                var body = $("body");
+                body.append("<h2>"+data.host+"</h2>");
+                body.append("<div>"+context.thread_type+", "+context.tid+"</div>");
             },
             error: function (jqXHR, status) {
                 // error handler
